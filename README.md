@@ -18,7 +18,7 @@ Blender addon for organizing the sidebar in Blender.
 
 ## Requirements
 
-- Blender 4.0.0 or higher
+- Blender 5.0
 
 ## Installation
 
@@ -58,3 +58,4 @@ Original authors:
 
 Update for current Blender version:
 - gh0stck 
+
