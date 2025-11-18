@@ -12,16 +12,30 @@ classes = (
 
 
 def register():
+    # Register property classes safely for Blender 5.0+
     for cls in classes:
-        bpy.utils.register_class(cls)
+        try:
+            bpy.utils.register_class(cls)
+        except RuntimeError:
+            # Class might already be registered (e.g. on reload)
+            pass
 
-    prefs.update_exclude_tabs()
-
-    bpy.types.WindowManager.simpletabs = bpy.props.PointerProperty(type=addon.AddonProps)
+    # Attach main PointerProperty on WindowManager if not present
+    if not hasattr(bpy.types.WindowManager, "simpletabs"):
+        bpy.types.WindowManager.simpletabs = bpy.props.PointerProperty(
+            type=addon.AddonProps
+        )
 
 
 def unregister():
-    del bpy.types.WindowManager.simpletabs
+    # Remove WindowManager property first
+    if hasattr(bpy.types.WindowManager, "simpletabs"):
+        del bpy.types.WindowManager.simpletabs
 
+    # Unregister classes in reverse order
     for cls in reversed(classes):
-        bpy.utils.unregister_class(cls)
+        try:
+            bpy.utils.unregister_class(cls)
+        except RuntimeError:
+            # Class might not be registered, skip
+            pass
