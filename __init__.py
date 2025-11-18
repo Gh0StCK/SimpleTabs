@@ -1,41 +1,34 @@
-import bpy
-from . import tab
-from . import prefs
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+
+bl_info = {
+    'name': 'SIMPLE TABS',
+    'author': 'bonjorno7, Chipp Walters, MasterXeon1001, Updated for Blender 5.0+ by gh0stck',
+    'description': 'Organize the Blender sidebar (Community Update)',
+    'blender': (5, 0, 0),
+    'version': (3, 0, 0),
+    'location': 'View3D',
+    'category': '3D View',
+}
+
+
 from . import addon
 
 
-classes = (
-    tab.TabProps,
-    prefs.AddonPrefs,
-    addon.AddonProps,
-)
-
-
 def register():
-    # Register property classes safely for Blender 5.0+
-    for cls in classes:
-        try:
-            bpy.utils.register_class(cls)
-        except RuntimeError:
-            # Class might already be registered (e.g. on reload)
-            pass
-
-    # Attach main PointerProperty on WindowManager if not present
-    if not hasattr(bpy.types.WindowManager, "simpletabs"):
-        bpy.types.WindowManager.simpletabs = bpy.props.PointerProperty(
-            type=addon.AddonProps
-        )
+    addon.register()
 
 
 def unregister():
-    # Remove WindowManager property first
-    if hasattr(bpy.types.WindowManager, "simpletabs"):
-        del bpy.types.WindowManager.simpletabs
-
-    # Unregister classes in reverse order
-    for cls in reversed(classes):
-        try:
-            bpy.utils.unregister_class(cls)
-        except RuntimeError:
-            # Class might not be registered, skip
-            pass
+    addon.unregister()
