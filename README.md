@@ -23,7 +23,7 @@ bpy_struct[key] = val: id properties not supported for this type
 
 ## Requirements
 
-- Blender 5.0
+- Blender 5.0 or higher
 
 ## Installation
 
@@ -63,5 +63,6 @@ Original authors:
 
 Update for current Blender version:
 - gh0stck 
+
 
 
