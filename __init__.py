@@ -17,7 +17,7 @@ bl_info = {
     'author': 'bonjorno7, Chipp Walters, MasterXeon1001, Updated for Blender 5.0+ by gh0stck',
     'description': 'Organize the Blender sidebar (Community Update)',
     'blender': (5, 0, 0),
-    'version': (3, 0, 0),
+    'version': (3, 1, 0),
     'location': 'View3D',
     'category': '3D View',
 }
