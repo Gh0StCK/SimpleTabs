@@ -12,6 +12,9 @@ Blender addon for organizing the sidebar in Blender.
 Fixed error:
 bpy_struct[key] = val: id properties not supported for this type
 
+Fix: Proper tab update on `.blend` file load
+
+
 ## Features
 
 - Organization and management of sidebar tabs
@@ -63,6 +66,7 @@ Original authors:
 
 Update for current Blender version:
 - gh0stck 
+
 
 
 
