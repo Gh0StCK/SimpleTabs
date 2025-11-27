@@ -7,13 +7,15 @@
 I took the liberty of updating the addon. After all, modern technologies allow doing this quite quickly and painlessly. So:
 Blender addon for organizing the sidebar in Blender.
 
+---
 ## Bug Fixes
 
 Fixed error:
 bpy_struct[key] = val: id properties not supported for this type
 
-Fix: Proper tab update on `.blend` file load
+Fix: Proper tab update on .blend savefile load
 
+---
 
 ## Features
 
@@ -66,6 +68,7 @@ Original authors:
 
 Update for current Blender version:
 - gh0stck 
+
 
 
 
